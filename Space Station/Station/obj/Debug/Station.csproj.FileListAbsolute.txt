@@ -239,3 +239,6 @@ E:\Alpha\Space Station\Space Station\Station\obj\Debug\GUI\Tasks.baml
 E:\Alpha\Space Station\Space Station\Station\obj\Debug\Station.g.resources
 E:\Alpha\Space Station\Space Station\Station\obj\Debug\Station.Properties.Resources.resources
 E:\Alpha\Space Station\Space Station\Station\obj\Debug\Station.csproj.GenerateResource.Cache
+C:\Users\Mohamed Elsayed\Documents\GitHub\Space-Station\Space Station\Station\bin\Debug\Station.exe.config
+C:\Users\Mohamed Elsayed\Documents\GitHub\Space-Station\Space Station\Station\obj\Debug\Station.exe
+C:\Users\Mohamed Elsayed\Documents\GitHub\Space-Station\Space Station\Station\obj\Debug\Station.pdb

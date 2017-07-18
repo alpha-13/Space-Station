@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-E:\Alpha\Space Station\Space Station\Station\obj\Debug\
+C:\Users\Mohamed Elsayed\Documents\GitHub\Space-Station\Space Station\Station\obj\Debug\
 Station
 none
 false
 DEBUG;TRACE
-E:\Alpha\Space Station\Space Station\Station\App.xaml
+C:\Users\Mohamed Elsayed\Documents\GitHub\Space-Station\Space Station\Station\App.xaml
 201309819707
 
 45-2016256552
-201972096913
+20-1983512375
 GUI\Actors\Admin.xaml;GUI\Actors\Astronaut.xaml;GUI\Actors\Doctor.xaml;GUI\Actors\Employee.xaml;GUI\Actors\Engineer.xaml;GUI\Actors\Security.xaml;GUI\Actors\Support.xaml;GUI\Add Shuttle.xaml;GUI\Check Balance.xaml;GUI\Contact.xaml;GUI\Decisions.xaml;GUI\Edit Information.xaml;GUI\Launch.xaml;GUI\Login Shuttle.xaml;GUI\Main.xaml;GUI\Register.xaml;GUI\Reporting.xaml;GUI\Second Login.xaml;GUI\Space Shuttle.xaml;GUI\Tasks.xaml;
 
 True
