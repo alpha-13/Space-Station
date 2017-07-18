@@ -1,0 +1,58 @@
+﻿<Window x:Class="Station.GUI.Tasks"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Station.GUI"
+        mc:Ignorable="d"
+        Height="500" Width="800" MinHeight="500" MinWidth="800" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="None" ResizeMode="NoResize" Foreground="White">
+    <Window.Background>
+        <ImageBrush ImageSource="/Station;component/Resources/Tasks.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Send Tasks" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontFamily="Segoe UI Historic"/>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Title" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                <TextBox x:Name="txt_Title" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="50,0,20,0" MaxLines="1" MaxLength="100" TabIndex="1" VerticalContentAlignment="Center" BorderBrush="#FF0040FF" Background="{x:Null}" Foreground="White"/>
+                <TextBlock Grid.Column="1" Text="Target" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                <TextBox Grid.Column="1" x:Name="txt_Target" IsEnabled="False" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="60,0,20,0" BorderBrush="#FF0040FF" Background="{x:Null}" Foreground="White"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <TextBox x:Name="txt_Search" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="25" Margin="5,10,5,0" TextChanged="Search_TextChanged" VerticalContentAlignment="Center" TabIndex="2" MaxLines="1" MaxLength="50" BorderBrush="#FF0040FF" Background="{x:Null}" Foreground="White"/>
+                    <TextBlock x:Name="Hint" Text="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Gray" Margin="15,15,0,0" IsHitTestVisible="False"/>
+                    <ListView x:Name="LV_Employees" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,40,5,5" SelectionChanged="LV_Employees_SelectionChanged" SelectionMode="Single" TabIndex="3" FontSize="15" Padding="3" BorderBrush="#FF0040FF" Background="#3F000000" Foreground="White" BorderThickness="1.5"/>
+                </Grid>
+                <TextBlock Text="Task Description" FontSize="15" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                <RichTextBox x:Name="rtb_Task" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,40,20,10" TabIndex="4" Padding="3" BorderThickness="1.5" BorderBrush="#FF0040FF" Background="#3F000000" FontSize="15" Foreground="White"/>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <TextBlock x:Name="txt_Message" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" Foreground="White" Margin="20,0,0,0" Background="#FF575757" Opacity="0"/>
+                <Button x:Name="btn_Send" Content="_Send" Width="100" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btn_Send_Click" TabIndex="5" IsEnabled="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White"/>
+                <Button x:Name="btn_Cancel" Content="_Cancel" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0" Click="btn_Cancel_Click" TabIndex="6" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

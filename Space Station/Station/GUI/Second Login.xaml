@@ -1,0 +1,22 @@
+﻿<Window x:Class="Station.GUI.Second_Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Station.GUI"
+        mc:Ignorable="d"
+        Height="300" Width="300" MaxHeight="300" MaxWidth="300" MinHeight="300" MinWidth="300" ResizeMode="NoResize" BorderBrush="#7F0080FF" BorderThickness="2" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#CC000000" Foreground="White">
+    <Grid>
+        <TextBlock Text="Launch Login" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="25" FontFamily="Segoe Print" FontStyle="Italic"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,82,0,0" Text="User Name" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,122,0,0" Text="Password" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_UserName" HorizontalAlignment="Stretch" Height="22" VerticalAlignment="Top" Margin="90,80,10,0" MaxLines="1" MaxLength="100" TabIndex="1" VerticalContentAlignment="Center" FontSize="15" PreviewKeyDown="txt_PreviewKeyDown" Background="#CC000000" BorderBrush="#FF0040FF" Foreground="White"/>
+        <PasswordBox x:Name="txt_Password" HorizontalAlignment="Stretch" Height="22" Margin="90,120,10,0" VerticalAlignment="Top" VerticalContentAlignment="Center" TabIndex="2" MaxLength="50" FontSize="15" PreviewKeyDown="txt_PreviewKeyDown" Background="#CC000000" BorderBrush="#FF0040FF" Foreground="White"/>
+
+        <TextBlock x:Name="txt_Message" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="15" Foreground="White" Background="#FF575757" Margin="10,70,10,0" Opacity="0"/>
+
+        <Button x:Name="btn_Login" Content="_Login" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,50" Width="75" Click="btn_Login_Click" TabIndex="3" Background="#BFDDDDDD" FontSize="13" BorderBrush="#FF005DFF"/>
+        <Button x:Name="btn_Cancel" Content="_Cancel" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" Width="75" Click="btn_Cancel_Click" TabIndex="4" Background="#BFDDDDDD" FontSize="13" BorderBrush="#FF005DFF"/>
+
+    </Grid>
+</Window>

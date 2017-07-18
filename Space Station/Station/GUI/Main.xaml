@@ -1,0 +1,30 @@
+﻿<Window x:Class="Station.GUI.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Station.GUI"
+        mc:Ignorable="d"
+       Title="Main" Height="500" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="500" WindowStyle="None" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="/Station;component/Resources/Main.jpg"/>
+    </Window.Background>
+    <Grid>
+        <TextBox x:Name="txt_userName" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,50" Width="200" Height="30" FontSize="16" VerticalContentAlignment="Center" TextChanged="txt_TextChanged" MaxLines="1" MaxLength="45" TabIndex="1" PreviewKeyDown="txt_userName_PreviewKeyDown" BorderBrush="#FF0040FF" Background="#7F000000" Foreground="White"/>
+        <PasswordBox x:Name="txt_password" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,50,0,0" Width="200" Height="30" FontSize="16" VerticalContentAlignment="Center" PasswordChanged="txt_password_PasswordChanged" MaxLength="95" TabIndex="2" PreviewKeyDown="txt_userName_PreviewKeyDown" BorderBrush="#FF0040FF" Foreground="White" Background="#7F000000"/>
+
+        <TextBlock x:Name="txtUserName" Text="User Name" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,120,50" Foreground="White" IsHitTestVisible="False"/>
+        <TextBlock x:Name="txtPassword" Text="Password" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,50,130,0" Foreground="White" IsHitTestVisible="False"/>
+
+        <TextBlock x:Name="UN_Hint" Text="*" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="180,0,0,50" Padding="0,15,0,0" Foreground="Red" FontSize="30" FontFamily="Microsoft Himalaya" IsHitTestVisible="False" Visibility="Hidden"/>
+        <TextBlock x:Name="Pass_Hint" Text="*" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="180,50,0,0" Padding="0,15,0,0" Foreground="Red" FontSize="30" FontFamily="Microsoft Himalaya" IsHitTestVisible="False" Visibility="Hidden"/>
+
+        <Button x:Name="btn_login" Content="_Login" Width="100" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,150,0,0" Click="btn_login_Click" TabIndex="3" Background="{x:Null}" BorderBrush="#FF1700FF" BorderThickness="1" Foreground="White" FontSize="14" FontWeight="Medium"/>
+        <Button x:Name="btn_register" Content="_Register" Width="100" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,220,0,0" Click="btn_register_Click" TabIndex="4" Background="{x:Null}" BorderBrush="#FF1700FF" Foreground="White" FontSize="14" FontWeight="Medium"/>
+
+        <Grid x:Name="Slider" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="25" Margin="20,0,20,25" IsHitTestVisible="False">
+            <TextBox x:Name="txtb_News" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="LightBlue" Height="25" VerticalContentAlignment="Center" Padding="10,0,0,0" BorderThickness="0" Margin="25,0,25,0" Opacity="0.8" IsTabStop="False"/>
+            <TextBox x:Name="txtb_News2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="LightCoral" Height="25" VerticalContentAlignment="Center" Padding="10,0,0,0" BorderThickness="0" Margin="25,25,25,0" Opacity="0.8" IsTabStop="False"/>
+        </Grid>
+    </Grid>
+</Window>

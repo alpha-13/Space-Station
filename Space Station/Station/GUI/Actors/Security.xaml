@@ -1,0 +1,120 @@
+﻿<Window x:Class="Station.GUI.Actors.Security"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Station.GUI.Actors"
+        xmlns:cam="clr-namespace:WebcamControl;assembly=WebcamControl"
+        mc:Ignorable="d"
+        Height="500" Width="800" Closed="Window_Closed" MinHeight="500" MinWidth="800" WindowStyle="None" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <DataTemplate x:Key="DevicesListTemplate">
+            <TextBlock Text="{Binding Name}"/>
+        </DataTemplate>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="/Station;component/Resources/Support.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Ellipse x:Name="Ellipse_Image" MouseDown="Ellipse_Image_MouseDown" Width="100" Height="100" Margin="15,5">
+                <Ellipse.Fill>
+                    <ImageBrush x:Name="Photo" Stretch="Fill"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <ListView x:Name="Options" Height="0" Visibility="Hidden" Margin="5,0,5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectionMode="Single" Opacity="0.75">
+                <ListViewItem x:Name="EditInfo" Height="30" PreviewMouseDown="EditInfo_PreviewMouseDown">Edit Info</ListViewItem>
+                <ListViewItem x:Name="Logout" Height="30" PreviewMouseDown="Logout_PreviewMouseDown">Logout</ListViewItem>
+                <ListViewItem x:Name="Cancel" Height="30" PreviewMouseDown="Ellipse_Image_MouseDown">Cancel</ListViewItem>
+            </ListView>
+            <TextBlock x:Name="txt_Name" Grid.Column="1" FontSize="20" VerticalAlignment="Center" Margin="10,0,10,0"/>
+
+            <TextBlock x:Name="txt_Message" Grid.Column="2" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Foreground="White" Background="#FF575757" Opacity="0"/>
+
+            <Grid x:Name="Config" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Hidden">
+                <TextBlock Text="Video Device" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,20,0,0"/>
+                <TextBlock Text="Audio Device" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,20"/>
+                <ComboBox x:Name="cmb_Video" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="100,20,20,0" ItemTemplate="{StaticResource DevicesListTemplate}" TabIndex="6"/>
+                <ComboBox x:Name="cmb_Audio" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="100,0,20,20" ItemTemplate="{StaticResource DevicesListTemplate}" TabIndex="7"/>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBox x:Name="txt_Search" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="25" Margin="20,10,20,10" TextChanged="txt_Search_TextChanged" VerticalContentAlignment="Center" TabIndex="1" MaxLines="1" MaxLength="50" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White"/>
+                <TextBlock x:Name="Hint" Text="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" IsHitTestVisible="False" Margin="30,15,0,0"/>
+                <ListView x:Name="LV_Access" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,40,20,0" SelectionChanged="LV_Access_SelectionChanged" TabIndex="2" SelectionMode="Single" Padding="3" FontSize="17.333" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White"/>
+                <TextBlock Text="Fault Access" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0"/>
+                <ListView x:Name="LV_Fault" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,25,20,10" SelectionChanged="LV_Fault_SelectionChanged" FontSize="15" Padding="3" SelectionMode="Single" TabIndex="3" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White"/>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Name" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+                    <TextBlock Text="Access Date" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+                    <TextBlock Text="Last Access" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+                    <TextBlock Text="Last Seen" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+                    <TextBlock Text="Jop" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+                    <TextBlock Text="Access" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+
+                    <TextBox x:Name="txt_AName" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" VerticalContentAlignment="Center" IsEnabled="False" FontSize="14.667" Background="#19000000" BorderBrush="#FF0040FF" Foreground="White"/>
+                    <TextBox x:Name="txt_ADate" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" VerticalContentAlignment="Center" IsEnabled="False" FontSize="14.667" Background="#19000000" BorderBrush="#FF0040FF" Foreground="White"/>
+                    <TextBox x:Name="txt_LAccess" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" VerticalContentAlignment="Center" IsEnabled="False" FontSize="14.667" Background="#19000000" BorderBrush="#FF0040FF" Foreground="White"/>
+                    <TextBox x:Name="txt_LSeen" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" VerticalContentAlignment="Center" IsEnabled="False" FontSize="14.667" Background="#19000000" BorderBrush="#FF0040FF" Foreground="White"/>
+                    <TextBox x:Name="txt_Jop" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" VerticalContentAlignment="Center" IsEnabled="False" FontSize="14.667" Background="#19000000" BorderBrush="#FF0040FF" Foreground="White"/>
+                    <TextBox x:Name="txt_Access" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" VerticalContentAlignment="Center" IsEnabled="False" FontSize="14.667" Background="#19000000" BorderBrush="#FF0040FF" Foreground="White"/>
+
+                    <Button x:Name="btn_Contact" Grid.ColumnSpan="2" Grid.Row="6" Content="Con_tact" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,10,20,10" TabIndex="4" Click="btn_Contact_Click" FontSize="16" Background="#BFDDDDDD" BorderBrush="#FF005DFF"/>
+                    <Button x:Name="btn_Alarm" Grid.ColumnSpan="2" Grid.Row="7" Content="_Alarm" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,10,20,10" TabIndex="5" Click="btn_Alarm_Click" FontSize="16" Background="#BFDDDDDD" BorderBrush="#FF005DFF"/>
+                </Grid>
+            </Grid>
+            <cam:Webcam x:Name="Camera" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,60" FrameRate="30" MinHeight="0" MinWidth="0"/>
+            <Grid Grid.Column="2" Height="50" VerticalAlignment="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btn_conf" Content="_Configuration" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,10" Click="btn_conf_Click" TabIndex="8" Background="#BFDDDDDD" FontSize="12" BorderBrush="#FF005DFF"/>
+                <Button x:Name="btn_Start_Stop" Grid.Column="1" Content="_Start" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,10" Click="btn_Start_Stop_Click" TabIndex="9" Background="#BFDDDDDD" FontSize="12" BorderBrush="#FF005DFF"/>
+                <Button x:Name="btn_Record_Stop" Grid.Column="2" Content="_Record" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,10" Click="btn_Record_Stop_Click" TabIndex="10" Background="#BFDDDDDD" FontSize="12" BorderBrush="#FF005DFF"/>
+                <Button x:Name="btn_Capture" Grid.Column="3" Content="_Capture" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,10" Click="btn_Capture_Click" TabIndex="11" Background="#BFDDDDDD" FontSize="12" BorderBrush="#FF005DFF"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

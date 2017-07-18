@@ -1,0 +1,263 @@
+﻿<Window x:Class="Station.GUI.Space_Shuttle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Station.GUI"
+        mc:Ignorable="d"
+        Height="500" Width="800" Closed="Window_Closed" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" MinHeight="500" MinWidth="800" WindowState="Maximized">
+    <Window.Background>
+        <ImageBrush ImageSource="/Station;component/Resources/Shuttle.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Ellipse x:Name="Ellipse_Image" MouseDown="Ellipse_Image_MouseDown" Width="100" Height="100" Margin="15,5">
+                <Ellipse.Fill>
+                    <ImageBrush x:Name="Photo" Stretch="Fill"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <ListView x:Name="Options" Height="0" Visibility="Hidden" Margin="5,0,5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectionMode="Single">
+                <ListViewItem x:Name="EditInfo" Height="30" PreviewMouseDown="EditInfo_PreviewMouseDown">Edit Info</ListViewItem>
+                <ListViewItem x:Name="Logout" Height="30" PreviewMouseDown="Logout_PreviewMouseDown">Logout</ListViewItem>
+                <ListViewItem x:Name="Cancel" Height="30" PreviewMouseDown="Ellipse_Image_MouseDown">Cancel</ListViewItem>
+            </ListView>
+            <TextBlock x:Name="txt_Name" Foreground="#FF00FF2E" FontFamily="Gabriola" Grid.Column="1" FontSize="25" VerticalAlignment="Center" Margin="10,0,10,0" FontStyle="Oblique" FontWeight="Bold"/>
+        </Grid>
+
+        <TabControl x:Name="tabControl" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch" Margin="10" Background="{x:Null}">
+            <TabItem Header="Galaxy" Width="120" TabIndex="1" Foreground="#FFFF8000">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="63*"/>
+                        <ColumnDefinition Width="84*"/>
+                        <ColumnDefinition Width="267*"/>
+                        <ColumnDefinition Width="352*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Name" VerticalAlignment="Center" Margin="5,10,0,9"/>
+                    <TextBlock Text="Age" Grid.Row="1" VerticalAlignment="Center" Margin="5,9,0,9"/>
+                    <TextBlock Text="Type" Grid.Row="2" VerticalAlignment="Center" Margin="5,10,0,9"/>
+                    <TextBlock Text="Diameter" Grid.Row="3" VerticalAlignment="Center" Margin="5,9,0,9"/>
+                    <TextBlock Text="Stars" Grid.Row="4" VerticalAlignment="Center" Margin="5,10,0,9"/>
+                    <TextBlock Text="Arms" Grid.Row="5" VerticalAlignment="Center" Margin="5,9,0,9"/>
+                    <TextBlock Text="Mass"  Grid.Row="6" VerticalAlignment="Center" Margin="5,10,0,9"/>
+                    <TextBlock Text="Expansion" Grid.Row="7" VerticalAlignment="Center" Margin="5,9,0,9"/>
+                    <TextBlock Text="Density" Grid.Row="8" VerticalAlignment="Center" Margin="5,10,0,9"/>
+
+                    <TextBox x:Name="Gtxt_Name" Grid.Column="1" VerticalAlignment="Center" Margin="5,9,5,8" Padding="0,0,17,0" TextChanged="Gtxt_Name_TextChanged" PreviewKeyDown="PreviewKeyDown_Charcters" Grid.ColumnSpan="2" TabIndex="1" VerticalContentAlignment="Center" MaxLength="100" MaxLines="1" Background="#CC000000" BorderBrush="#FF0040FF" Foreground="White"/>
+                    <Image x:Name="G_Hint" Grid.Column="2" Width="17" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,18,7,17" Visibility="Hidden"/>
+
+                    <TextBox x:Name="Gtxt_Age" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="5,8" PreviewKeyDown="PreviewKeysDown" Grid.ColumnSpan="2" TabIndex="2" VerticalContentAlignment="Center" MaxLength="50" MaxLines="1" Background="#CC000000" BorderBrush="#FF0040FF" Foreground="White"/>
+                    <TextBox x:Name="Gtxt_Type" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="5,9,5,8" PreviewKeyDown="PreviewKeysDown" Grid.ColumnSpan="2" TabIndex="3" VerticalContentAlignment="Center" MaxLength="50" MaxLines="1" Background="#CC000000" BorderBrush="#FF0040FF" Foreground="White"/>
+                    <TextBox x:Name="Gtxt_Diameter" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="5,8" PreviewKeyDown="PreviewKeysDown" Grid.ColumnSpan="2" TabIndex="4" VerticalContentAlignment="Center" MaxLength="50" MaxLines="1" Background="#CC000000" BorderBrush="#FF0040FF" Foreground="White"/>
+                    <TextBox x:Name="Gtxt_Stars" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Margin="5,9,5,8" PreviewKeyDown="PreviewKeysDown" Grid.ColumnSpan="2" TabIndex="5" VerticalContentAlignment="Center" MaxLength="50" MaxLines="1" Background="#CC000000" BorderBrush="#FF0040FF" Foreground="White"/>
+                    <TextBox x:Name="Gtxt_Arms" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Margin="5,8" PreviewKeyDown="PreviewKeysDown" Grid.ColumnSpan="2" TabIndex="6" VerticalContentAlignment="Center" MaxLength="50" MaxLines="1" Background="#CC000000" BorderBrush="#FF0040FF" Foreground="White"/>
+                    <TextBox x:Name="Gtxt_Mass" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Margin="5,9,5,8" PreviewKeyDown="PreviewKeysDown" Grid.ColumnSpan="2" TabIndex="7" VerticalContentAlignment="Center" MaxLength="50" MaxLines="1" Background="#CC000000" BorderBrush="#FF0040FF" Foreground="White"/>
+                    <TextBox x:Name="Gtxt_Expansion" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" Margin="5,8" PreviewKeyDown="PreviewKeysDown" Grid.ColumnSpan="2" TabIndex="8" VerticalContentAlignment="Center" MaxLines="1" MaxLength="50" Background="#CC000000" BorderBrush="#FF0040FF" Foreground="White"/>
+                    <TextBox x:Name="Gtxt_Density" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" Margin="5,9,5,8" PreviewKeyDown="PreviewKeysDown" Grid.ColumnSpan="2" TabIndex="9" VerticalContentAlignment="Center" MaxLines="1" MaxLength="50" Background="#CC000000" BorderBrush="#FF0040FF" Foreground="White"/>
+
+                    <TextBlock Text="Description" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="146,10,145,0"/>
+                    <RichTextBox x:Name="G_Description" Grid.Column="3" Grid.RowSpan="5" Margin="10,30,10,5" TabIndex="10" Padding="3" Background="#3F212121" Foreground="White" BorderBrush="#FF0040FF" BorderThickness="1.5"/>
+
+                    <Grid Grid.Row="5" Grid.Column="3" Grid.RowSpan="3" Margin="10,10,10,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".75*"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width=".75*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image x:Name="GImage" Grid.Column="1" MouseDown="GImage_MouseDown"/>
+                    </Grid>
+                    <Button x:Name="btn_ClearGalaxy" Content="_Clear" Width="75" Height="22" Grid.Row="8" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,7" Click="btn_ClearGalaxy_Click" TabIndex="11" Background="#BFDDDDDD" FontSize="13" BorderBrush="#FF005DFF"/>
+                    <TextBlock x:Name="txt_Message" Grid.Row="8" Grid.Column="3" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" FontSize="15" Foreground="White" Margin="100,0,100,7" Background="#FF0F2089" Opacity="0"/>
+                    <Button x:Name="btn_AddGalaxy" Content="_ADD" Width="75" Height="22" Grid.Row="8" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,7" Click="btn_AddGalaxy_Click" TabIndex="12" Background="#BFDDDDDD" FontSize="13" BorderBrush="#FF005DFF"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Planetary System" Width="120" TabIndex="2" Foreground="White">
+                <Grid x:Name="PSGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".18*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Galaxy" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    <TextBlock Text="Name" Grid.Row="1" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    <TextBlock Text="Plants" Grid.Row="2" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    <TextBlock Text="Asteroids" Grid.Row="3" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    <TextBlock Text="Location" Grid.Row="4" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    <TextBlock Text="Speed" Grid.Row="5" VerticalAlignment="Center" Margin="5,0,0,0"/>
+
+                    <ComboBox x:Name="PStxt_Galaxy" Grid.Column="1" VerticalAlignment="Center" Margin="5,0,5,0" TabIndex="1" Background="#CC000000" BorderBrush="#FF003AFF" Foreground="White"/>
+                    <TextBox x:Name="PStxt_Name" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="5,0,5,0" TextChanged="PStxt_Name_TextChanged"  PreviewKeyDown="PreviewKeyDown_Charcters" TabIndex="2" VerticalContentAlignment="Center" MaxLines="1" MaxLength="50" Foreground="White" Background="#CC000000" BorderBrush="#FF0040FF"/>
+                    <Image x:Name="PS_Hint" Grid.Column="1" Grid.Row="1" Width="17" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,7,0" Visibility="Hidden"/>
+
+                    <TextBox x:Name="PStxt_Plants" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="5,0,5,0"  PreviewKeyDown="PreviewKeysDown" TabIndex="3" VerticalContentAlignment="Center" MaxLines="1" MaxLength="50" Foreground="White" Background="#CC000000" BorderBrush="#FF0040FF"/>
+                    <TextBox x:Name="PStxt_Asteroids" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="5,0,5,0" PreviewKeyDown="PreviewKeysDown" TabIndex="4" VerticalContentAlignment="Center" MaxLength="20" MaxLines="1" Foreground="White" Background="#CC000000" BorderBrush="#FF0040FF"/>
+                    <TextBox x:Name="PStxt_Location" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Margin="5,0,5,0" PreviewKeyDown="PreviewKeysDown" TabIndex="5" VerticalContentAlignment="Center" MaxLength="200" MaxLines="1" Foreground="White" Background="#CC000000" BorderBrush="#FF0040FF"/>
+                    <TextBox x:Name="PStxt_Speed" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Margin="5,0,5,0" PreviewKeyDown="PreviewKeysDown" TabIndex="6" VerticalContentAlignment="Center" MaxLength="50" MaxLines="1" Foreground="White" Background="#CC000000" BorderBrush="#FF0040FF"/>
+
+                    <TextBlock Text="Description" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                    <RichTextBox x:Name="PS_Desc" Grid.Column="2" Grid.RowSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,30,10,5" TabIndex="7" Padding="3" Background="#7F252424" BorderBrush="#FF0040FF" Foreground="White" BorderThickness="1.5"/>
+                    <Grid Grid.Row="3" Grid.Column="2" Grid.RowSpan="3" Margin="10,10,10,35">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".5*"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width=".5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image x:Name="PSImage" Grid.Column="1" MouseDown="PSImage_MouseDown"/>
+                    </Grid>
+                    <Button x:Name="btn_ClearPS" Content="_Clear" Width="75" Height="22" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,7" Click="btn_ClearPS_Click" TabIndex="8" Background="#BFDDDDDD" FontSize="13" BorderBrush="#FF005DFF"/>
+                    <TextBlock x:Name="txt_MessagePS" Grid.Row="8" Grid.Column="2" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" FontSize="15" Foreground="White" Margin="100,0,100,7" Background="#FF575757" Opacity="0"/>
+                    <Button x:Name="btn_AddPS" Content="_ADD" Width="75" Height="22" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,7" Click="btn_AddPS_Click" TabIndex="9" Background="#BFDDDDDD" FontSize="13" BorderBrush="#FF005DFF"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Plant" Width="120" TabIndex="3" Foreground="#FF00E600">
+                <Grid x:Name="PGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="64*"/>
+                        <ColumnDefinition Width="36*"/>
+                        <ColumnDefinition Width="333*"/>
+                        <ColumnDefinition Width="333*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Planetary" VerticalAlignment="Center" Margin="10,9,0,9" Grid.ColumnSpan="2"/>
+                    <TextBlock Grid.Row="1" Text="Name" VerticalAlignment="Center" Margin="10,9,0,9" Grid.ColumnSpan="2"/>
+                    <TextBlock Grid.Row="2" Text="Water" VerticalAlignment="Center" Margin="10,9,0,9" Grid.ColumnSpan="2"/>
+                    <TextBlock Grid.Row="3" Text="Tempreture" VerticalAlignment="Center" Margin="10,9,0,9" Grid.ColumnSpan="2"/>
+                    <TextBlock Grid.Row="4" Text="Live" VerticalAlignment="Center" Margin="10,9,0,9" Grid.ColumnSpan="2"/>
+                    <TextBlock Grid.Row="5" Text="Year" VerticalAlignment="Center" Margin="10,9,0,9" Grid.ColumnSpan="2"/>
+                    <TextBlock Grid.Row="6" Text="Moons" VerticalAlignment="Center" Margin="10,9,0,9" Grid.ColumnSpan="2"/>
+                    <TextBlock Grid.Row="7" Text="Oxygen" VerticalAlignment="Center" Margin="10,9,0,9" Grid.ColumnSpan="2"/>
+                    <TextBlock Grid.Row="8" Text="Carbon Dioxide" VerticalAlignment="Center" Margin="10,9,0,9" Grid.ColumnSpan="2"/>
+                    <TextBlock Grid.Row="9" Text="Nitrogen" VerticalAlignment="Center" Margin="10,10,0,9" Grid.ColumnSpan="2"/>
+
+                    <ComboBox x:Name="ptxt_PlanetarySystem" Grid.Column="2" VerticalAlignment="Center" Margin="5,6" TabIndex="1" Foreground="White" Background="#CC000000" BorderBrush="#FF003AFF"/>
+                    <TextBox x:Name="ptxt_Name" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Margin="5,8" TextChanged="ptxt_Name_TextChanged" PreviewKeyDown="PreviewKeyDown_Charcters" TabIndex="2" VerticalContentAlignment="Center" MaxLines="1" MaxLength="50" Foreground="White" Background="#CC000000" BorderBrush="#FF0040FF"/>
+                    <Image x:Name="P_Hint" Grid.Column="2" Grid.Row="1" Width="17" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,8,7,8" Visibility="Hidden"/>
+
+                    <TextBox x:Name="ptxt_Water" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Margin="5,8" PreviewKeyDown="PreviewKeysDown" TabIndex="3" VerticalContentAlignment="Center" MaxLength="50" MaxLines="1" Foreground="White" Background="#CC000000" BorderBrush="#FF0040FF"/>
+                    <TextBox x:Name="ptxt_Tempreture" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" Margin="5,8" PreviewKeyDown="PreviewKeysDown" TabIndex="4" VerticalContentAlignment="Center" MaxLength="50" MaxLines="1" Foreground="White" Background="#CC000000" BorderBrush="#FF0040FF"/>
+                    <TextBox x:Name="ptxt_Live" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" Margin="5,8" PreviewKeyDown="PreviewKeysDown" TabIndex="5" VerticalContentAlignment="Center" MaxLength="50" MaxLines="1" Foreground="White" Background="#CC000000" BorderBrush="#FF0040FF"/>
+                    <TextBox x:Name="ptxt_Year" Grid.Row="5" Grid.Column="2" VerticalAlignment="Center" Margin="5,8" PreviewKeyDown="PreviewKeysDown" TabIndex="6" VerticalContentAlignment="Center" MaxLength="50" MaxLines="1" Foreground="White" Background="#CC000000" BorderBrush="#FF0040FF"/>
+                    <TextBox x:Name="ptxt_Moons" Grid.Row="6" Grid.Column="2" VerticalAlignment="Center" Margin="5,8" PreviewKeyDown="PreviewKeysDown" TabIndex="7" VerticalContentAlignment="Center" MaxLength="50" MaxLines="1" Foreground="White" Background="#CC000000" BorderBrush="#FF0040FF"/>
+                    <TextBox x:Name="ptxt_Oxygen" Grid.Row="7" Grid.Column="2" VerticalAlignment="Center" Margin="5,8" PreviewKeyDown="PreviewKeysDown" TabIndex="8" VerticalContentAlignment="Center" MaxLength="50" MaxLines="1" Foreground="White" Background="#CC000000" BorderBrush="#FF0040FF"/>
+                    <TextBox x:Name="ptxt_CO2" Grid.Row="8" Grid.Column="2" VerticalAlignment="Center" Margin="5,8" PreviewKeyDown="PreviewKeysDown" TabIndex="9" VerticalContentAlignment="Center" MaxLength="50" MaxLines="1" Foreground="White" Background="#CC000000" BorderBrush="#FF0040FF"/>
+                    <TextBox x:Name="ptxt_Nitro" Grid.Row="9" Grid.Column="2" VerticalAlignment="Center" Margin="5,9,5,8" PreviewKeyDown="PreviewKeysDown" TabIndex="10" VerticalContentAlignment="Center" MaxLength="50" MaxLines="1" Foreground="White" Background="#CC000000" BorderBrush="#FF0040FF"/>
+
+                    <TextBlock Text="Description" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="136,10,136,0"/>
+                    <RichTextBox x:Name="P_Desc" Grid.RowSpan="6" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,30,10,5" TabIndex="11" Padding="3" Background="#7F252424" BorderBrush="#FF0040FF" Foreground="White" BorderThickness="1.5"/>
+
+                    <Grid Grid.Row="6" Grid.Column="3" Grid.RowSpan="3" Margin="10,10,10,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".75*"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width=".75*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image x:Name="PImage" Grid.Column="1" MouseDown="PImage_MouseDown"/>
+                    </Grid>
+                    <Button x:Name="btn_ClearPlant" Content="_Clear" Width="75" Height="22" Grid.Row="9" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,7" Click="btn_ClearPlant_Click" TabIndex="12" Background="#BFDDDDDD" FontSize="13" BorderBrush="#FF005DFF"/>
+                    <TextBlock x:Name="txt_MessageP" Grid.Row="9" Grid.Column="3" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" FontSize="15" Foreground="White" Margin="100,0,100,7" Background="#FF575757" Opacity="0"/>
+                    <Button x:Name="btn_AddPlant" Content="_ADD" Width="75" Height="22" Grid.Row="9" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,7" Click="btn_AddPlant_Click" TabIndex="13" Background="#BFDDDDDD" FontSize="13" BorderBrush="#FF005DFF"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Mission" Width="120" TabIndex="4" Foreground="White">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="80"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Name" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="Start Date" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="End Date" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="txtDec" Text="Description" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+
+                        <TextBox x:Name="MissionName" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="22" Margin="5,5,5,2.5" TextChanged="MissionName_TextChanged" PreviewKeyDown="PreviewKeyDown_Charcters" TabIndex="1" MaxLines="1" MaxLength="100" VerticalContentAlignment="Center" Foreground="White" Background="#CC000000" BorderBrush="#FF0040FF"/>
+                        <Image x:Name="CheckName" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Width="19" Margin="0,2,10,0" Visibility="Hidden"/>
+                        <DatePicker x:Name="MissionStart" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,2.5,5,2.5" FirstDayOfWeek="Saturday" TabIndex="2" Opacity="0.75"/>
+                        <DatePicker x:Name="MissionEnd" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,2.5,5,2.5" FirstDayOfWeek="Saturday" TabIndex="3" Opacity="0.75"/>
+                        <RichTextBox x:Name="Description" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" TabIndex="4" Padding="3" Background="#7F252424" BorderBrush="#FF0040FF" Foreground="White" BorderThickness="1.5"/>
+                        <Button x:Name="btn_AddMission" Content="_ADD" Width="75" Height="22" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,15,0,0" Click="btn_AddMission_Click" TabIndex="5" Background="#BFDDDDDD" FontSize="13" BorderBrush="#FF005DFF"/>
+                        <TextBlock x:Name="txt_MessageMission" Grid.Row="9" Grid.ColumnSpan="2" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" Foreground="White" Margin="100,0,100,7" Padding="10,2,10,2" Background="#FF575757" Opacity="0"/>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Missions" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                        <ListView x:Name="LVMissions" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,30,10,10" SelectionChanged="LVMissions_SelectionChanged" TabIndex="6"  Background="#7F000000" BorderBrush="#FF0040FF" Foreground="White" BorderThickness="1.5">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Width="115" Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Width="115" Header="Start Date" DisplayMemberBinding="{Binding Start}"/>
+                                    <GridViewColumn Width="115" Header="End Date" DisplayMemberBinding="{Binding End}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <RichTextBox x:Name="MissionDescription" Grid.Row="1" Margin="10" TabIndex="7" Background="#7F252424" BorderBrush="#FF0040FF" Foreground="White" BorderThickness="1.5"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="News" Width="120" TabIndex="5" Foreground="Red">
+                <Grid>
+                    <TextBlock Text="News" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,60"/>
+                    <TextBox x:Name="News" Height="25" FontSize="17" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20,0,20,0"  PreviewKeyDown="PreviewKeysDown" TabIndex="1" MaxLines="1" MaxLength="200" Foreground="White" Background="#CC000000" BorderBrush="#FF0040FF"/>
+                    <Button x:Name="btnAddNews" Width="100" Height="27" Content="_ADD" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,80,0,0" Click="btnAddNews_Click" TabIndex="2" Background="#BFDDDDDD" FontSize="13" BorderBrush="#FF005DFF"/>
+                    <TextBlock x:Name="txt_MessageNews" Grid.Row="9" Grid.ColumnSpan="2" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" Foreground="White" Margin="100,0,100,20" Padding="10,2,10,2" Background="#FF575757" Opacity="0"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

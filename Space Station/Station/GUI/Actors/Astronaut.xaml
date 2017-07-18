@@ -1,0 +1,202 @@
+﻿<Window x:Class="Station.GUI.Actors.Astronaut"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Station.GUI.Actors"
+        mc:Ignorable="d"
+        Height="500" Width="800" WindowStartupLocation="CenterScreen" MinHeight="500" MinWidth="800" WindowStyle="None" WindowState="Maximized" Closed="Window_Closed">
+    <Window.Background>
+        <ImageBrush ImageSource="/Station;component/Resources/Astronaut.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Ellipse x:Name="Ellipse_Image" MouseDown="Ellipse_Image_MouseDown" Width="100" Height="100" Margin="15,5">
+                <Ellipse.Fill>
+                    <ImageBrush x:Name="Photo" Stretch="Fill"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <ListView x:Name="Options" Height="0" Visibility="Hidden" Margin="5,0,5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectionMode="Single" Opacity="0.75">
+                <ListViewItem x:Name="EditInfo" Height="30" PreviewMouseDown="EditInfo_PreviewMouseDown">Edit Info</ListViewItem>
+                <ListViewItem x:Name="Logout" Height="30" PreviewMouseDown="Logout_PreviewMouseDown">Logout</ListViewItem>
+                <ListViewItem x:Name="Cancel" Height="30" PreviewMouseDown="Ellipse_Image_MouseDown">Cancel</ListViewItem>
+            </ListView>
+            <TextBlock x:Name="txt_Name" Foreground="#FF00FF2E" FontFamily="Gabriola" Grid.Column="1" FontSize="25" VerticalAlignment="Center" Margin="10,0,10,0" FontStyle="Oblique" FontWeight="Bold"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <CheckBox x:Name="CB_Plant" Content="Plant" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5" Click="CB_Plant_Click" TabIndex="1" Foreground="White"/>
+            <CheckBox x:Name="CB_PS" Content="Planetary System" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,25" Click="CB_PS_Click" TabIndex="2" Foreground="White"/>
+            <CheckBox x:Name="CB_Galaxy" Content="Galaxy" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,45" Click="CB_Galaxy_Click" TabIndex="3" Foreground="White"/>
+
+            <TextBox x:Name="txt_Search" Height="22" HorizontalAlignment="Stretch" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="10,70,10,10" TextChanged="txt_Search_TextChanged" TabIndex="4" Background="{x:Null}" BorderBrush="#FF00FF17" Foreground="White"/>
+            <TextBlock x:Name="Search" Text="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,73" IsHitTestVisible="False" Foreground="White"/>
+            <ListView x:Name="LV_Search" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,100,10,5" SelectionChanged="LV_Search_SelectionChanged" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled" TabIndex="5" Background="{x:Null}" BorderBrush="#FF00FF23" Foreground="White" Opacity="0.75">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="100" Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Width="75" Header="Type" DisplayMemberBinding="{Binding Type}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <Grid x:Name="plant_Info" Grid.Column="1" Margin="10,10,5,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition Height="52"/>
+                </Grid.RowDefinitions>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="18" Text="Plant" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Planetary" Grid.Row="1" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Grid.Row="2" Text="Name" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Grid.Row="3" Text="Water" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Grid.Row="4" Text="Tempreture" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Grid.Row="5" Text="Live" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Grid.Row="6" Text="Year" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Grid.Row="7" Text="Moons" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Grid.Row="8" Text="Oxygen" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Grid.Row="9" Text="CO2" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Grid.Row="10" Text="Nitrogen" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Grid.Row="11" Text="Image" VerticalAlignment="Center" Margin="10,0,0,0"/>
+
+                <TextBox x:Name="ptxt_PlanetarySystem" FontSize="13" FontWeight="Medium" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="ptxt_Name" FontSize="13" FontWeight="Medium" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="ptxt_Water" FontSize="13" FontWeight="Medium" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="ptxt_Tempreture" FontSize="13" FontWeight="Medium" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="ptxt_Live" FontSize="13" FontWeight="Medium" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="ptxt_Year" FontSize="13" FontWeight="Medium" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="ptxt_Moons" FontSize="13" FontWeight="Medium" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="ptxt_Oxygen" FontSize="13" FontWeight="Medium" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="ptxt_CO2" FontSize="13" FontWeight="Medium" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="ptxt_Nitro" FontSize="13" FontWeight="Medium" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <Image x:Name="PImage" Grid.Row="11" Grid.Column="1" Margin="10,5,10,5"/>
+            </Grid>
+
+            <Grid x:Name="Planetary_Info" Grid.Column="2" Margin="5,10,5,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition Height="52"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="18" Text="Planetary System" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Galaxy" Grid.Row="1" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Name" Grid.Row="2" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Plants" Grid.Row="3" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Asteroids" Grid.Row="4" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Location" Grid.Row="5" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Speed" Grid.Row="6" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Image" Grid.Row="7" VerticalAlignment="Center" Margin="10,0,0,0"/>
+
+                <TextBox x:Name="PStxt_Galaxy" FontSize="13" FontWeight="Medium" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="PStxt_Name" FontSize="13" FontWeight="Medium" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="PStxt_Plants" FontSize="13" FontWeight="Medium" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="PStxt_Asteroids" FontSize="13" FontWeight="Medium" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="PStxt_Location" FontSize="13" FontWeight="Medium" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="PStxt_Speed" FontSize="13" FontWeight="Medium" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <Image x:Name="PSImage" Grid.Row="7" Grid.Column="1" Margin="10,5,10,5"/>
+            </Grid>
+
+            <Grid x:Name="Galaxy_Info" Grid.Column="3" Margin="5,10,5,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition Height="52"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="18" Text="Galaxy" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Name" Grid.Row="1" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Age" Grid.Row="2" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Type" Grid.Row="3" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Diameter" Grid.Row="4" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Stars" Grid.Row="5" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Arms" Grid.Row="6" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Mass" Grid.Row="7" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Expansion" Grid.Row="8" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Density" Grid.Row="9" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" FontSize="13" Text="Image" Grid.Row="10" VerticalAlignment="Center" Margin="10,0,0,0"/>
+
+                <TextBox x:Name="Gtxt_Name" FontSize="13" FontWeight="Medium" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="Gtxt_Age" FontSize="13" FontWeight="Medium" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="Gtxt_Type" FontSize="13" FontWeight="Medium" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="Gtxt_Diameter" FontSize="13" FontWeight="Medium" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="Gtxt_Stars" FontSize="13" FontWeight="Medium" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="Gtxt_Arams" FontSize="13" FontWeight="Medium" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="Gtxt_Mass" FontSize="13" FontWeight="Medium" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="Gtxt_Expansion" FontSize="13" FontWeight="Medium" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="Gtxt_Density" FontSize="13" FontWeight="Medium" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0" IsTabStop="False" IsHitTestVisible="False" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" VerticalContentAlignment="Center"/>
+                <Image x:Name="GImage" Grid.Row="10" Grid.Column="1" Margin="10,5,10,5"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.ColumnSpan="4" Margin="5,10,5,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Add_Shuttle" Content="_Add Shuttle" Margin="5,0,5,0" Click="Add_Shuttle_Click" TabIndex="6" Background="#BFDDDDDD" FontSize="13" BorderBrush="#FF005DFF"/>
+                <Button x:Name="Decision" Content="_Decition" Grid.Column="1" Margin="5,0,5,0" Click="Decision_Click" TabIndex="7" Background="#BFDDDDDD" FontSize="13" BorderBrush="#FF005DFF"/>
+                <Button x:Name="Login_Shuttle" Content="Login _Shuttle" Grid.Column="2" Margin="5,0,5,0" Click="Login_Shuttle_Click" TabIndex="8" Background="#BFDDDDDD" FontSize="13" BorderBrush="#FF005DFF"/>
+                <Button x:Name="Reporting" Content="_Reporting" Grid.Column="3"  Margin="5,0,5,0" Click="Reporting_Click" TabIndex="9" Background="#BFDDDDDD" FontSize="13" BorderBrush="#FF005DFF"/>
+                <Button x:Name="Contact" Content="_Contact" Grid.Column="4" Margin="5,0,5,0" Click="Contact_Click" TabIndex="10" Background="#BFDDDDDD" FontSize="13" BorderBrush="#FF005DFF"/>
+                <Button x:Name="Launch" Content="_Launch" Grid.Column="5" Margin="5,0,5,0" Click="Launch_Click" TabIndex="11" Background="#BFDDDDDD" FontSize="13" BorderBrush="#FF005DFF"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

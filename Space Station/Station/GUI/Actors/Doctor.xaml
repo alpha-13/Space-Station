@@ -1,0 +1,143 @@
+﻿<Window x:Class="Station.GUI.Actors.Doctor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Station.GUI.Actors"
+        mc:Ignorable="d"
+        Height="500" Width="800" WindowState="Maximized" WindowStyle="None" WindowStartupLocation="CenterScreen" MinHeight="500" MinWidth="800" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="/Station;component/Resources/Doctor.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Ellipse x:Name="Ellipse_Image" MouseDown="Ellipse_Image_MouseDown" Width="100" Height="100" Margin="15,5">
+                <Ellipse.Fill>
+                    <ImageBrush x:Name="Photo" Stretch="Fill"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <ListView x:Name="Options" Height="0" Visibility="Hidden" Margin="5,0,5,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" SelectionMode="Single" Opacity="0.75">
+                <ListViewItem x:Name="EditInfo" Height="30" PreviewMouseDown="EditInfo_PreviewMouseDown">Edit Info</ListViewItem>
+                <ListViewItem x:Name="Logout" Height="30" PreviewMouseDown="Logout_PreviewMouseDown">Logout</ListViewItem>
+                <ListViewItem x:Name="Cancel" Height="30" PreviewMouseDown="Ellipse_Image_MouseDown">Cancel</ListViewItem>
+            </ListView>
+            <TextBlock x:Name="txt_Name" Foreground="#FF00FF2E" FontFamily="Gabriola" Grid.Column="1" FontSize="25" VerticalAlignment="Center" Margin="10,0,10,0" FontStyle="Oblique" FontWeight="Bold"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Advice" FontWeight="DemiBold" Foreground="White" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="txt_Advice" Grid.Column="1" Height="22" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,10,0" VerticalContentAlignment="Center" TabIndex="1" Opacity="0.5" FontSize="15" MaxLines="1" MaxLength="200"/>
+            <Button x:Name="Advice" Grid.Column="2" Content="Sen_d" Height="22" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10" Click="Advice_Click" TabIndex="2" Opacity="0.75"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="250"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="Search" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="25" Margin="10,0,10,0" TextChanged="Search_TextChanged" VerticalContentAlignment="Center" TabIndex="3" Opacity="0.5" />
+                    <TextBlock x:Name="Hint" Foreground="White" Text="Search" HorizontalAlignment="Left" VerticalAlignment="Center" IsHitTestVisible="False" Margin="15,0,0,0"/>
+                    <ListView x:Name="LV_Pepole" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,5,10,5" SelectionChanged="LV_Pepole_SelectionChanged" TabIndex="4" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Opacity="0.5"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="110"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Ellipse Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.8">
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="Photo2" Stretch="Fill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Grid Grid.Row="1" Margin="5,0,5,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Name" FontSize="13" FontWeight="DemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="Jop" Grid.Row="1" FontSize="13" FontWeight="DemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txt_PName" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" IsHitTestVisible="False" Opacity="0.5"/>
+                        <TextBox x:Name="txt_PJop" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" IsHitTestVisible="False" Opacity="0.5"/>
+                    </Grid>
+
+                    <Button x:Name="btn_Show" Content="Sho_w" IsEnabled="False" Height="25" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20,0,20,30" Click="btn_Show_Click" TabIndex="5" Opacity="0.75"/>
+                    <Button x:Name="btn_New" Content="_New" IsEnabled="False" Height="25" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20,30,20,0" Click="btn_New_Click" TabIndex="6" Opacity="0.75"/>
+                </Grid>
+            </Grid>
+            <Grid x:Name="Information"  Grid.Column="1" Margin="10,10,10,10" IsEnabled="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Age" FontSize="13" FontWeight="DemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="Gender" Grid.Row="1" FontSize="13" FontWeight="DemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="Pluse" Grid.Row="2" FontSize="13" FontWeight="DemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="Weight" Grid.Row="3" FontSize="13" FontWeight="DemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="Pressure" Grid.Column="2" FontSize="13" FontWeight="DemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="Temperature" Grid.Row="1" Grid.Column="2" FontSize="13" FontWeight="DemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="Blood Type" Grid.Row="2" Grid.Column="2" FontSize="13" FontWeight="DemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="Cholesterol" Grid.Row="3" Grid.Column="2" FontSize="13" FontWeight="DemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBox x:Name="txt_Age" FontSize="14" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" TabIndex="7" VerticalContentAlignment="Center" PreviewKeyDown="txt_Age_PreviewKeyDown" MaxLines="1" MaxLength="5" Opacity="0.5"/>
+                    <ComboBox x:Name="cmb_Gender" FontSize="14" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" TabIndex="8" Opacity="0.5">
+                        <ComboBoxItem>Male</ComboBoxItem>
+                        <ComboBoxItem>FeMale</ComboBoxItem>
+                    </ComboBox>
+                    <TextBox x:Name="txt_Pluse" FontSize="14" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" TabIndex="9" VerticalContentAlignment="Center" MaxLength="50" MaxLines="1" Opacity="0.5"/>
+                    <TextBox x:Name="txt_Weight" FontSize="14" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" TabIndex="10" VerticalContentAlignment="Center" MaxLength="20" MaxLines="1" Opacity="0.5"/>
+
+                    <TextBox x:Name="txt_Pressure" FontSize="14" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" TabIndex="11" VerticalContentAlignment="Center" MaxLength="20" MaxLines="1" Opacity="0.5"/>
+                    <TextBox x:Name="txt_Temp" FontSize="14" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" TabIndex="12" VerticalContentAlignment="Center" MaxLength="20" MaxLines="1" Opacity="0.5"/>
+                    <TextBox x:Name="txt_Blood" FontSize="14" Grid.Column="4" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" TabIndex="13" VerticalContentAlignment="Center" MaxLength="20" MaxLines="1" Opacity="0.5"/>
+                    <TextBox x:Name="txt_Chole" FontSize="14" Grid.Column="4" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0" TabIndex="14" VerticalContentAlignment="Center" MaxLength="20" MaxLines="1" Opacity="0.5"/>
+                </Grid>
+
+                <TextBlock Text="Report" Grid.Row="1" FontWeight="DemiBold" Foreground="Red" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0"/>
+                <RichTextBox x:Name="rtb_Report" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,30,10,10" TabIndex="15" Padding="3" Opacity="0.5" FontSize="15"/>
+                <TextBlock x:Name="txt_Message" Grid.Row="2" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Foreground="White" Margin="20,0,100,0" Background="#FF26CF00" Opacity="0"/>
+                <Button x:Name="btn_SaveInfo" Grid.Row="2" Width="75" Height="22" Content="_Save" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0" Click="btn_SaveInfo_Click" TabIndex="16" Opacity="0.75"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

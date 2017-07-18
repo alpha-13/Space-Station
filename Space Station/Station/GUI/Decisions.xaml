@@ -1,0 +1,63 @@
+﻿<Window x:Class="Station.GUI.Decisions"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Station.GUI"
+        mc:Ignorable="d"
+       Title="Decisions" Height="500" Width="800" MinHeight="500" MinWidth="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Maximized" Foreground="White">
+    <Window.Background>
+        <ImageBrush ImageSource="/Station;component/Resources/Decisions.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <TextBlock Text="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,16,0,0"/>
+            <TextBox x:Name="txt_Search" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="60,15,20,0" SelectionChanged="txt_Search_SelectionChanged" PreviewKeyDown="txt_Search_PreviewKeyDown" TabIndex="1" MaxLines="1" MaxLength="50" VerticalContentAlignment="Center" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" FontSize="13"/>
+            <ListView x:Name="LV_Decitions" Visibility="Hidden" Grid.RowSpan="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="60,30,20,0" SelectionChanged="LV_Decitions_SelectionChanged" BorderThickness="1.5" Background="#3F000000" Foreground="White" BorderBrush="#FF0040FF"/>
+
+            <Grid Margin="10,100,-10,0">
+                <TextBlock Text="Decision" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0"/>
+                <RichTextBox x:Name="rtb_Decision" IsEnabled="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,25,10,40" VerticalScrollBarVisibility="Auto" Padding="5" TabIndex="2" Background="#3F000000" BorderBrush="#FF0040FF" BorderThickness="1.5" Foreground="White" FontSize="16"/>
+            </Grid>
+            <Grid Grid.Row="1" VerticalAlignment="Bottom" Margin="5,0,10,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Post Date" VerticalAlignment="Center"/>
+                <DatePicker x:Name="Date_Post" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="55,0,5,0" IsHitTestVisible="True" FirstDayOfWeek="Saturday" IsTodayHighlighted="True" IsEnabled="False"/>
+                <CheckBox x:Name="CB_State" Content="State" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" IsHitTestVisible="True" IsEnabled="False" Foreground="White" BorderBrush="#FF0080FF"/>
+                <CheckBox x:Name="CB_Seen" Content="Seen" Grid.Column="2"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" IsHitTestVisible="True" IsEnabled="False" Foreground="White" BorderBrush="#FF0080FF"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Title" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                <TextBox x:Name="txt_Title" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="60,0,20,0" PreviewKeyDown="txt_Title_PreviewKeyDown" MaxLength="50" MaxLines="3" TabIndex="3" VerticalContentAlignment="Center" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" FontSize="13"/>
+                <TextBlock Text="Cost" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                <TextBox x:Name="txt_Cost" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="60,0,20,0" PreviewKeyDown="txt_Cost_PreviewKeyDown" TabIndex="4" VerticalContentAlignment="Center" MaxLines="1" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBlock Text="Description" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0"/>
+                <RichTextBox x:Name="rtb_Description" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,25,20,40" VerticalScrollBarVisibility="Auto" TabIndex="5" BorderBrush="#FF0040FF" BorderThickness="1.5" Foreground="White" Background="#3F000000" FontSize="15"/>
+                <Button x:Name="btn_New" Content="_New" Width="75" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Click="btn_New_Click" TabIndex="6" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" FontSize="13"/>
+                <TextBlock x:Name="txt_Message" VerticalAlignment="Bottom" Foreground="White" TextAlignment="Center" Margin="100,0,180,10" Background="#FF636363" FontSize="15" Opacity="0" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
+                <Button x:Name="btn_Decision" Content="_Send" Width="75" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,90,10" Click="btn_Decision_Click" TabIndex="7" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" FontSize="13"/>
+                <Button x:Name="btn_Back" Content="_Back" Width="75" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Click="btn_Back_Click" TabIndex="8" Background="{x:Null}" BorderBrush="#FF0040FF" Foreground="White" FontSize="13"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
