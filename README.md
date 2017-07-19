@@ -3,10 +3,10 @@ That's my first academic project based on software engineering life cycles (incr
 # How to use
 - Download or clone the project and attach the database files with your SQL-Server management studio.
 - Go to "Data" folders in the project and replace 'Server' name with your SQL-Server name.
-- when system starts, login with Username: admin, Password: admin to see all actors and their information to explore all system functions.
+- When system starts, login with Username: admin, Password: admin to see all actors and their information to explore all system functions.
 - For more accessibility check database tables !
 - Use UML diagrams to know system actors, what functions can they do? and so on... 
-- The documentation is very simple, but it can help to understand system components and sorry about my English language on this file 😅.
+- The documentation is very simple, but it can help to understand system components and sorry about my English language in this file 😅.
 # Some screen shots
 ### Login Page
 ![login](https://user-images.githubusercontent.com/20142053/28346195-b1ceec5e-6c2f-11e7-9c4f-da83a2ebad42.jpg)
